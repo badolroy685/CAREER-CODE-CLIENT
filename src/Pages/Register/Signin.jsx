@@ -2,9 +2,10 @@ import React, { use } from 'react';
 import Lottie from 'lottie-react';
 import signinAnimation from '../../assets/Lotties/login.json';
 import { AuthContext } from '../../Contexts/AuthContext/AuthContext';
+import SocialLogin from './SocialLogin';
 
 const Signin = () => {
-       const {createUser} = use(AuthContext);
+       const {signIn} = use(AuthContext);
         const handleRegister = e => {
             e.preventDefault();
             const form = e.target;
@@ -12,8 +13,8 @@ const Signin = () => {
             const password = form.password.value;
             console.log(email, password);
     
-            //create user with firebase
-            createUser(email, password)
+            //SignIn user with firebase
+            signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -43,6 +44,7 @@ const Signin = () => {
                             <button className="btn btn-neutral mt-4">Login</button>
                         </fieldset>
                        </form>
+                       <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
